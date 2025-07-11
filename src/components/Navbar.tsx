@@ -1,67 +1,65 @@
 
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 
 const Navbar: React.FC = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = [
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' }
-  ];
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled ? 'glass' : 'bg-transparent'
-      }`}
-    >
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="font-headline font-bold text-xl text-primary"
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      scrolled ? 'glass py-3' : 'py-4'
+    }`}>
+      <div className="container mx-auto px-6 flex justify-between items-center">
+        <div 
+          className="font-headline font-bold text-xl text-white cursor-pointer"
+          onClick={() => scrollToSection('hero')}
+        >
+          Portfolio
+        </div>
+        
+        <div className="hidden md:flex space-x-8">
+          <button
+            onClick={() => scrollToSection('about')}
+            className="text-gray-light hover:text-primary transition-colors duration-300 font-subheading"
           >
-            Portfolio
-          </motion.div>
-          
-          <div className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                whileHover={{ scale: 1.05 }}
-                className="font-subheading text-gray-light hover:text-primary transition-colors duration-300 relative group"
-              >
-                {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-              </motion.a>
-            ))}
-          </div>
-
-          <div className="md:hidden">
-            <button className="text-gray-light hover:text-primary transition-colors">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
+            About
+          </button>
+          <button
+            onClick={() => scrollToSection('skills')}
+            className="text-gray-light hover:text-primary transition-colors duration-300 font-subheading"
+          >
+            Skills
+          </button>
+          <button
+            onClick={() => scrollToSection('projects')}
+            className="text-gray-light hover:text-primary transition-colors duration-300 font-subheading"
+          >
+            Projects
+          </button>
+          <button
+            onClick={() => scrollToSection('contact')}
+            className="text-gray-light hover:text-primary transition-colors duration-300 font-subheading"
+          >
+            Contact
+          </button>
         </div>
       </div>
-    </motion.nav>
+    </nav>
   );
 };
 
