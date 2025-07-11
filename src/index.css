@@ -15,16 +15,16 @@
     --popover: 220 20% 10%;
     --popover-foreground: 0 0% 100%;
     
-    --primary: 158 100% 50%;             /* Soft cyan #00FFC6 */
+    --primary: 180 100% 50%;             /* Soft cyan #00FFE5 */
     --primary-foreground: 220 26% 7%;
     
     --secondary: 220 20% 15%;
     --secondary-foreground: 0 0% 100%;
     
     --muted: 220 20% 12%;
-    --muted-foreground: 0 0% 80%;       /* Light gray #cccccc */
+    --muted-foreground: 0 0% 75%;       /* Light gray #c0c0c0 */
     
-    --accent: 158 100% 50%;
+    --accent: 180 100% 50%;
     --accent-foreground: 220 26% 7%;
     
     --destructive: 0 84% 60%;
@@ -32,16 +32,16 @@
     
     --border: 220 20% 20%;
     --input: 220 20% 15%;
-    --ring: 158 100% 50%;
+    --ring: 180 100% 50%;
     
     --radius: 0.75rem;
     
     /* Custom Cybersecurity Colors */
     --navy-dark: 220 26% 7%;            /* #0D1117 */
-    --charcoal: 0 0% 7%;                /* #121212 */
-    --cyan-accent: 158 100% 50%;        /* #00FFC6 */
-    --gray-light: 0 0% 80%;             /* #cccccc */
-    --gray-medium: 0 0% 73%;            /* #bbbbbb */
+    --charcoal: 220 20% 8%;             /* #151923 */
+    --cyan-accent: 180 100% 50%;        /* #00FFE5 */
+    --gray-light: 0 0% 75%;             /* #c0c0c0 */
+    --gray-medium: 0 0% 65%;            /* #a6a6a6 */
     --glass-bg: 220 20% 10%;
     --glass-border: 220 20% 25%;
   }
@@ -100,6 +100,38 @@
   .skill-bar-fill {
     transform-origin: left;
     transition: transform 0.3s ease;
+  }
+
+  .progressive-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+  }
+
+  .progressive-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .skill-card {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.5s ease-out;
+  }
+
+  .skill-card.animate-in {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .skill-progress {
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 1s ease-out;
+  }
+
+  .skill-progress.fill {
+    transform: scaleX(1);
   }
 }
 
