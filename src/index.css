@@ -5,47 +5,45 @@
 
 @layer base {
   :root {
-    /* Dark Portfolio Theme - HSL Colors */
-    --background: 217 32% 6%;
-    --foreground: 210 40% 98%;
+    /* Cybersecurity Dark Theme - HSL Colors */
+    --background: 220 26% 7%;           /* Deep navy #0D1117 */
+    --foreground: 0 0% 100%;            /* White #ffffff */
     
-    --card: 220 25% 10%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 20% 10%;
+    --card-foreground: 0 0% 100%;
     
-    --popover: 220 25% 10%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 20% 10%;
+    --popover-foreground: 0 0% 100%;
     
-    --primary: 188 95% 68%;
-    --primary-foreground: 217 32% 6%;
+    --primary: 158 100% 50%;             /* Soft cyan #00FFC6 */
+    --primary-foreground: 220 26% 7%;
     
-    --secondary: 220 25% 15%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 20% 15%;
+    --secondary-foreground: 0 0% 100%;
     
-    --muted: 220 25% 12%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 220 20% 12%;
+    --muted-foreground: 0 0% 80%;       /* Light gray #cccccc */
     
-    --accent: 188 95% 68%;
-    --accent-foreground: 217 32% 6%;
+    --accent: 158 100% 50%;
+    --accent-foreground: 220 26% 7%;
     
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
     
-    --border: 220 25% 20%;
-    --input: 220 25% 15%;
-    --ring: 188 95% 68%;
+    --border: 220 20% 20%;
+    --input: 220 20% 15%;
+    --ring: 158 100% 50%;
     
     --radius: 0.75rem;
     
-    /* Custom Portfolio Colors */
-    --navy-dark: 217 32% 6%;
-    --navy-medium: 220 25% 10%;
-    --navy-light: 220 25% 15%;
-    --charcoal: 220 13% 18%;
-    --cyan-bright: 188 95% 68%;
-    --cyan-muted: 188 50% 45%;
-    --gray-light: 215 20% 65%;
-    --glass-bg: 220 25% 10%;
-    --glass-border: 220 25% 20%;
+    /* Custom Cybersecurity Colors */
+    --navy-dark: 220 26% 7%;            /* #0D1117 */
+    --charcoal: 0 0% 7%;                /* #121212 */
+    --cyan-accent: 158 100% 50%;        /* #00FFC6 */
+    --gray-light: 0 0% 80%;             /* #cccccc */
+    --gray-medium: 0 0% 73%;            /* #bbbbbb */
+    --glass-bg: 220 20% 10%;
+    --glass-border: 220 20% 25%;
   }
   
   * {
@@ -56,6 +54,7 @@
     @apply bg-background text-foreground;
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
+    background: linear-gradient(135deg, hsl(var(--navy-dark)), hsl(var(--charcoal)));
   }
   
   .font-headline {
@@ -97,55 +96,6 @@
       transform: translateY(-20px);
     }
   }
-  
-  .skill-card {
-    perspective: 1000px;
-  }
-  
-  .skill-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-  }
-  
-  .skill-card:hover .skill-card-inner {
-    transform: rotateY(180deg);
-  }
-  
-  .skill-card-front,
-  .skill-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 0.75rem;
-  }
-  
-  .skill-card-back {
-    transform: rotateY(180deg);
-  }
-  
-  .skill-bar {
-    height: 8px;
-    background: hsl(var(--muted));
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  
-  .skill-bar-fill {
-    height: 100%;
-    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--cyan-muted)));
-    border-radius: 4px;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 1s ease-out;
-  }
-  
-  .skill-bar-fill.animate {
-    transform: scaleX(1);
-  }
 }
 
 /* Smooth scrolling */
@@ -168,5 +118,6 @@ html {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--cyan-muted));
+  background: hsl(var(--primary));
+  opacity: 0.8;
 }

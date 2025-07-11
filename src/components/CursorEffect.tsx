@@ -39,7 +39,7 @@ const CursorEffect: React.FC = () => {
         
         document.body.appendChild(trail);
         
-        // Remove after animation
+        // Remove after animation - fix TypeScript error by using window.setTimeout
         setTimeout(() => {
           if (trail.parentNode) {
             trail.parentNode.removeChild(trail);
@@ -49,12 +49,12 @@ const CursorEffect: React.FC = () => {
     };
 
     // Throttle mouse move events
-    let timeoutId: number;
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
     const throttledMouseMove = (event: MouseEvent) => {
       if (timeoutId) return;
       timeoutId = setTimeout(() => {
         handleMouseMove(event);
-        timeoutId = 0;
+        timeoutId = null;
       }, 50);
     };
 
@@ -62,6 +62,9 @@ const CursorEffect: React.FC = () => {
     
     return () => {
       document.removeEventListener('mousemove', throttledMouseMove);
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
     };
   }, [isEnabled]);
 

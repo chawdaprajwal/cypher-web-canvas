@@ -5,7 +5,7 @@ import { portfolioConfig } from '../config/portfolio';
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 bg-gradient-to-br from-navy-dark via-navy-medium to-charcoal">
+    <section className="min-h-screen flex items-center justify-center px-6 bg-gradient-to-br from-navy-dark via-charcoal to-navy-dark">
       <div className="container mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -22,7 +22,7 @@ const HeroSection: React.FC = () => {
             <img
               src={portfolioConfig.personal.profileImage}
               alt={portfolioConfig.personal.name}
-              className="w-32 h-32 rounded-full mx-auto mb-8 glass p-1 hover:animate-glow transition-all duration-300"
+              className="w-32 h-32 rounded-full mx-auto mb-8 glass p-1 hover:ring-2 hover:ring-primary transition-all duration-300"
             />
           </motion.div>
           
@@ -30,7 +30,7 @@ const HeroSection: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="font-headline font-bold text-5xl md:text-7xl mb-6 bg-gradient-to-r from-primary to-cyan-muted bg-clip-text text-transparent"
+            className="font-headline font-bold text-5xl md:text-7xl mb-6 text-white"
           >
             {portfolioConfig.personal.name}
           </motion.h1>
@@ -39,7 +39,7 @@ const HeroSection: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="font-subheading text-xl md:text-2xl text-gray-light mb-8 max-w-2xl mx-auto"
+            className="font-mono text-xl md:text-2xl text-primary mb-8 max-w-2xl mx-auto"
           >
             {portfolioConfig.personal.tagline}
           </motion.p>
@@ -54,9 +54,9 @@ const HeroSection: React.FC = () => {
               href="#projects"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-block bg-primary text-navy-dark px-8 py-4 rounded-lg font-subheading font-semibold hover:bg-cyan-muted transition-colors duration-300"
+              className="inline-block bg-primary text-navy-dark px-8 py-4 rounded-lg font-subheading font-semibold hover:bg-primary/90 transition-colors duration-300"
             >
-              View My Work
+              View Projects
             </motion.a>
             <motion.a
               href="#contact"
